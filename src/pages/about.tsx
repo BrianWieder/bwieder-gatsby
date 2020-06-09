@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 
-const SecondPage: React.FC = () => (
+const AboutPage: React.FC = () => (
   <Layout>
     <SEO title="About" />
     <h1>About Me!</h1>
@@ -13,4 +13,4 @@ const SecondPage: React.FC = () => (
   </Layout>
 );
 
-export default SecondPage;
+export default AboutPage;
