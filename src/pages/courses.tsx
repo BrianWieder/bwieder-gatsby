@@ -22,13 +22,33 @@ type Props = {
 
 const CoursesPage: React.FC<Props> = ({ data }) => {
   const courses = data.allCoursesJson.nodes;
-  const para = courses.map(course => {
-    return <p key={course.id}>{course.name}</p>;
+  const subjects = new Map<string, Course[]>();
+  courses.forEach(course => {
+    const otherCourses = subjects.get(course.subject);
+    if (otherCourses === undefined) {
+      subjects.set(course.subject, [course]);
+    } else {
+      otherCourses.push(course);
+      subjects.set(course.subject, otherCourses);
+    }
+  });
+
+  const display: JSX.Element[] = [];
+  subjects.forEach((subjectCourses, subject) => {
+    const subjectCoursesDis = subjectCourses.map(course => {
+      return <p key={course.id}>{course.name}</p>;
+    });
+    display.push(
+      <div key={subject}>
+        <h1>{subject}</h1>
+        {subjectCoursesDis}
+      </div>
+    );
   });
   return (
     <div>
       <h1>Courses</h1>
-      {para}
+      {display}
     </div>
   );
 };
