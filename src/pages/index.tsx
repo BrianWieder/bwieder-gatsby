@@ -12,7 +12,7 @@ const IndexPage: React.FC = () => (
     <p>Now go build something great.</p>
     <Link to="/about">About Me!</Link>
     <br />
-    <Link to="/using-typescript/">Go to &quot;Using TypeScript&quot;</Link>
+    <Link to="/courses">Checkout the courses that I have taken!</Link>
   </Layout>
 );
 

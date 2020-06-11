@@ -20,8 +20,9 @@ collections:
     folder: courses
     create: true
     extension: json
+    identifier_field: course
     fields:
-      - { name: name, label: Name }
+      - { name: name, label: "Course Title" }
       - { name: course, label: Course }
       - { name: completionDate, label: "Completion Date" }
       - { name: grade, label: Grade }
