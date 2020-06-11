@@ -5,5 +5,6 @@
   "inProgress": false,
   "programmingLanguage": "C",
   "subject": "CS",
-  "description": ""
+  "description": "* Programming Language - C\n* Basic Linux commands.\n* Basics of Assembly.\n* Fundamentals of x86 architecture.\n* Relationship between C and x86 assembly.\n* Use of debugging and other system tools.",
+  "completionDate": "Spring 2020"
 }
