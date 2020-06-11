@@ -15,6 +15,14 @@ module.exports = {
         path: `${__dirname}/blog`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `courses-pages`,
+        path: `${__dirname}/courses`,
+      },
+    },
     `gatsby-transformer-remark`,
+    `gatsby-transformer-json`,
   ],
 };
