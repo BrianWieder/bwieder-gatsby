@@ -1,7 +1,19 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-const Template: React.FC = ({ data }) => {
+type Props = {
+  data: {
+    markdownRemark: {
+      frontmatter: {
+        title: string;
+        date: string;
+      };
+      html: string;
+    };
+  };
+};
+
+const Template: React.FC<Props> = ({ data }) => {
   const { markdownRemark } = data;
   const { frontmatter, html } = markdownRemark;
   return (

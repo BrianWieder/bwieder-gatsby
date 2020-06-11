@@ -5,7 +5,8 @@
  */
 
 // You can delete this file if you're not using it
-exports.createPages = async ({ actions, graphql, reporter }) => {
+
+const createBlog = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
 
   const blogPostTemplate = require.resolve("./src/templates/blogTemplate.tsx");
@@ -34,11 +35,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
-      path: node.frontmatter.slug,
+      path: `/blog/${node.frontmatter.slug}`,
       component: blogPostTemplate,
       context: {
         slug: node.frontmatter.slug,
       },
     });
   });
+};
+
+exports.createPages = async ({ actions, graphql, reporter }) => {
+  await createBlog({ actions, graphql, reporter });
 };

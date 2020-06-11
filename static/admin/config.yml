@@ -15,3 +15,17 @@ collections:
       - { name: date, label: Date, widget: datetime }
       - { name: title, label: Title }
       - { name: body, label: Body, widget: markdown }
+  - name: courses
+    label: Courses
+    folder: courses
+    create: true
+    extension: json
+    fields:
+      - { name: name, label: Name }
+      - { name: course, label: Course }
+      - { name: completionDate, label: "Completion Date" }
+      - { name: grade, label: Grade }
+      - { name: inProgress, label: "In Progress", widget: boolean }
+      - { name: programmingLanguage, label: "Programming Language" }
+      - { name: subject, label: Subject }
+      - { name: description, label: Description, widget: markdown }
