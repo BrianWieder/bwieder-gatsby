@@ -1,11 +1,9 @@
 import React from "react";
 import { Link } from "gatsby";
-
-import Layout from "../components/layout";
 import SEO from "../components/seo";
 
 const IndexPage: React.FC = () => (
-  <Layout>
+  <div>
     <SEO title="Home" />
     <h1>Hi people</h1>
     <p>Welcome to your new Gatsby site.</p>
@@ -13,7 +11,7 @@ const IndexPage: React.FC = () => (
     <Link to="/about">About Me!</Link>
     <br />
     <Link to="/courses">Checkout the courses that I have taken!</Link>
-  </Layout>
+  </div>
 );
 
 export default IndexPage;

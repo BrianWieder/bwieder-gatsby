@@ -24,5 +24,6 @@ module.exports = {
     },
     `gatsby-transformer-remark`,
     `gatsby-transformer-json`,
+    `gatsby-plugin-layout`
   ],
 };
