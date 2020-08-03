@@ -30,6 +30,16 @@ const _items: ICommandBarItemProps[] = [
     key: 'About',
     text: 'About',
     commandBarButtonAs: () => <HeaderLink to="/about" text="About"/>
+  },
+  {
+    key: 'Courses',
+    text: 'Courses',
+    commandBarButtonAs: () => <HeaderLink to="/courses" text="Courses"/>
+  },
+  {
+    key: "",
+    text: '',
+    className: 'no-show-nav-button'
   }
 ];
 
