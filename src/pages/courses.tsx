@@ -1,5 +1,12 @@
 import React from "react";
 import { graphql } from "gatsby";
+import { GroupedList } from "@fluentui/react/lib/GroupedList";
+import { SelectionMode } from "@fluentui/react/lib/DetailsList";
+import { IGroup } from "@fluentui/react/lib/DetailsList";
+import CourseListItem from "../components/CourseListItem";
+import { initializeIcons } from "@fluentui/react/lib/Icons";
+
+initializeIcons();
 
 type Course = {
   name: string;
@@ -33,22 +40,48 @@ const CoursesPage: React.FC<Props> = ({ data }) => {
     }
   });
 
-  const display: JSX.Element[] = [];
-  subjects.forEach((subjectCourses, subject) => {
-    const subjectCoursesDis = subjectCourses.map(course => {
-      return <p key={course.id}>{course.name}</p>;
+  const groups: IGroup[] = [];
+  const items: { name: string }[] = [];
+
+  let subjectStartIndex = 0;
+  subjects.forEach((courses, subject) => {
+    const subjectCourses: IGroup[] = [];
+    let coursesStartIndex = subjectStartIndex;
+    courses.forEach(course => {
+      const courseDescription = course.description.split("\n");
+      courseDescription.forEach(desc => {
+        items.push({ name: desc });
+      });
+      const courseLength = courseDescription.length;
+      subjectCourses.push({
+        key: course.name,
+        name: course.name,
+        count: courseLength,
+        startIndex: coursesStartIndex,
+      });
+      coursesStartIndex += courseLength;
     });
-    display.push(
-      <div key={subject}>
-        <h1>{subject}</h1>
-        {subjectCoursesDis}
-      </div>
-    );
+    groups.push({
+      key: subject,
+      name: subject,
+      children: subjectCourses,
+      count: coursesStartIndex,
+      startIndex: subjectStartIndex,
+    });
+    subjectStartIndex += coursesStartIndex;
   });
+
   return (
     <div>
       <h1>Courses</h1>
-      {display}
+      <GroupedList
+        groups={groups}
+        items={items}
+        onRenderCell={(depth?: number, item?: string, index?: number) => (
+          <CourseListItem item={item} itemDepth={depth} itemIndex={index} />
+        )}
+        selectionMode={SelectionMode.single}
+      />
     </div>
   );
 };
