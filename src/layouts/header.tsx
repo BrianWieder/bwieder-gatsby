@@ -1,46 +1,16 @@
-import HeaderLink from "./HeaderLink";
-import PropTypes from "prop-types";
 import React from "react";
-import {CommandBar, ICommandBarItemProps} from '@fluentui/react/lib/CommandBar';
+import { AppBar, Toolbar, IconButton, Typography } from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
 
-type PropTypes = {
-  siteTitle: string;
-};
-
-const Header: React.FC<PropTypes> = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <CommandBar
-      items={_items}
-    />
-  </header>
+const Header: () => JSX.Element = () => (
+  <AppBar position="static">
+    <Toolbar>
+      <IconButton edge="start" aria-label="Menu">
+        <MenuIcon />
+      </IconButton>
+      <Typography variant="h6">Brian Wieder</Typography>
+    </Toolbar>
+  </AppBar>
 );
-
-const _items: ICommandBarItemProps[] = [
-  {
-    key: 'Home',
-    text: 'About',
-    commandBarButtonAs: () => <HeaderLink to="/" text="Home"/>
-  },
-  {
-    key: 'About',
-    text: 'About',
-    commandBarButtonAs: () => <HeaderLink to="/about" text="About"/>
-  },
-  {
-    key: 'Courses',
-    text: 'Courses',
-    commandBarButtonAs: () => <HeaderLink to="/courses" text="Courses"/>
-  },
-  {
-    key: "",
-    text: '',
-    className: 'no-show-nav-button'
-  }
-];
 
 export default Header;

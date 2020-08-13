@@ -10,6 +10,7 @@ import { useStaticQuery, graphql } from "gatsby";
 
 import Header from "./header";
 import "./layout.css";
+import { Helmet } from "react-helmet";
 
 type DataProps = {
   children: React.ReactElement[];
@@ -28,6 +29,12 @@ const Layout: React.FC<DataProps> = ({ children }) => {
 
   return (
     <>
+      <Helmet>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        />
+      </Helmet>
       <Header siteTitle={data.site.siteMetadata.title} />
       <div
         style={{
